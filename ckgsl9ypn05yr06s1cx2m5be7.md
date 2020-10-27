@@ -168,11 +168,11 @@ Ok. All done  now lets run the app 🙂
 Run in the CMD as shown below.
 To run every minute
 ```
-C:\Users\jaqsp>wallpaper -t 1
+C:\Users\jaqsp>wallpaper.py -t 1
 ```
 Or if you want to change wallpaper every 5 minutes
 ```
-C:\Users\jaqsp>wallpaper -t 5
+C:\Users\jaqsp>wallpaper.py -t 5
 ```
 
 ### Conclusion
