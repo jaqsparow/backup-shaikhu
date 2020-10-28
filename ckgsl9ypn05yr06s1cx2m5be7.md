@@ -51,7 +51,7 @@ import os
 import time
 import random
 import requests
-import ctypes,win32con
+import ctypes
 ```
 #### Why we need these modules
 - **argparse: ** Since this is a CLI app, we need to pass arguments to our app using this module
