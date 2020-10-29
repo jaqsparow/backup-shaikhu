@@ -1,9 +1,11 @@
 ## How to auto change desktop wallpaper every minute using Python
 
+> This post has been updated to include changes to support Linux operating system as well. So you can use this code to change desktop background in both linux and windows computers 🙂.
+
 In this fun tutorial we are going to download a random wallpaper from **pexels **and set it to our desktop background every minute using Python. While it sounds like fun project, but we are going to learn some important concepts like how to make http request, how to download a file and save it to your local machine and most importantly how to set the wallpaper using Windows's system function.
 
 Visit my GitHub page for complete codes at  [https://github.com/jaqsparow/change-desktop-wallpaper](https://github.com/jaqsparow/change-desktop-wallpaper) 
-> Note: All these code snippets are tested on windows 10, with Python v3.9.0
+> Note: All these code snippets are tested on windows 10 and Ubuntu 20.04 LTS, with Python v3.9.0
 
 ### What we will build?
 We are going to build a CLI app using Python to change desktop wallpaper every given number of minutes. Every wallpaper downloaded from internet will be unique and our app will change the wallpaper based on the time we set.
@@ -52,6 +54,7 @@ import time
 import random
 import requests
 import ctypes
+import platform
 ```
 #### Why we need these modules
 - **argparse: ** Since this is a CLI app, we need to pass arguments to our app using this module
@@ -60,6 +63,7 @@ import ctypes
 - **random:** To generate random number , so we can make random request url every time
 - **requests: ** We are using this module to make http request and to download the wallpaper
 - **ctypes: ** This module is to call foreign function in Python. It provides C compatible data types and allows to call DLL and shared libraries. We need this to call **SystemParametersInfoW** to change our wallpaper
+- **platform: ** We are using this inbuilt module to know the operating system where this code will run. Based on that we will call system function to change the wallpaper
 
 #### Generate a random number
 Lets create a function named **get_wallpaper()** and generate a random number inside this function, which we will use to make random http request URL.
@@ -115,10 +119,20 @@ In this section we are going to create a new function **set_wallpaper()** as fol
 ```
 def set_wallpaper():
     get_wallpaper()
-    path = os.getcwd()+'\\temp.jpg'
+    #Check the operating system
+    system_name = platform.system().lower()
+    path = ''
+    if system_name =='linux':
+        path = os.getcwd()+'/temp.jpg'
+        command = "gsettings set org.gnome.desktop.background picture-uri file:" + path
+        os.system(command)
+    elif system_name == 'windows':
+        path = os.getcwd()+'\\temp.jpg'
+        ctypes.windll.user32.SystemParametersInfoW(20,0,path,0)
 ```
 Lets take a look what we did above. In the first line inside **set_wallpaper()** we are calling the function *get_wallpaper()* to download the image and save it to *temp.jpg* file. In the next line, we are assigning *path* variable with the complete path of the image that we just downloaded.
 
+Please note we are using **platform.system()** function to identify the operating system and based on system we are running respecting command to change the desktop wallpaper.
 #### How to call Windows' system function?
 The next line shown below is interesting. With the help of **ctypes** module, we are calling Windows's system C++ function *SystemParametersInfoW()* to change the wallpaper. Lets see different parameters of this function.
 ```
@@ -176,7 +190,7 @@ C:\Users\jaqsp>wallpaper.py -t 5
 ```
 
 ### Conclusion
-Hope this post will help you understand some important concepts like how we made http requests and downloaded an image to our local system. Also how we used Windows's system function and called it from Python program to change the wallpaper. There are many other parameters available for this system function that we can use to perform some other interesting cases. Visit the link below to know more about this function.
+Hope this post will help you understand some important concepts like how we made http requests and downloaded an image to our local system. Also how we used Windows's system function or(linux's gnome setting) and called it from Python program to change the wallpaper. There are many other parameters available for this system function that we can use to perform some other interesting cases. Visit the link below to know more about this function.
 
 Visit  [my GitHub repository](https://github.com/jaqsparow/change-desktop-wallpaper)  to see complete codes. Thanks for reading:)
 
