@@ -134,14 +134,14 @@ Lets see what our *send_alert* looks like
 ```
 import smtplib
 
-FROM_EMAIL = 'FROM EMAIL ADDRESS'
+FROM = 'FROM EMAIL ADDRESS'
 PSWD = 'YOUR PASSWORD'
 
-TO_EMAIL = 'TO EMAIL ADDRESS'
+TO = 'TO EMAIL ADDRESS'
 
 #Subject and header
 SUB = 'Subject: Alert for shaikhu.com \n'
-header = 'To:' + TO_EMAIL + '\n' + 'From: ' + FROM_EMAIL + '\n' + SUB
+header = 'To:' + TO + '\n' + 'From: ' + FROM + '\n' + SUB
 
 #Message
 body = """
@@ -155,9 +155,9 @@ def sendalert(msg):
     smtpObj.ehlo()
 
     smtpObj.starttls()
-    smtpObj.login(FROM_EMAIL, PSWD)
+    smtpObj.login(FROM, PSWD)
 
-    smtpObj.sendmail(FROM_EMAIL,TO_EMAIL,msg)
+    smtpObj.sendmail(FROM,TO,msg)
     smtpObj.quit()
 if __name__ == '__main__':
     sendalert(message)
