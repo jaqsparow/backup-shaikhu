@@ -141,7 +141,8 @@ PSWD = 'YOUR PASSWORD'
 TO_EMAIL = 'TO EMAIL ADDRESS'
 
 #Subject and header
-header = 'To:' + TO_EMAIL + '\n' + 'From: ' + FROM_EMAIL + '\n' + 'Subject: Alert for shaikhu.com \n'
+header = 'To:' + TO_EMAIL + '\n' + 'From: ' + 
+FROM_EMAIL + '\n' + 'Subject: Alert for shaikhu.com \n'
 
 #Message
 body = """
