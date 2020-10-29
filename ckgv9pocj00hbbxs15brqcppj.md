@@ -30,7 +30,6 @@ shaikh@ubuntu:~/scripts$ curl -I "https://hashnode.com"
 HTTP/2 200 
 date: Thu, 29 Oct 2020 17:35:18 GMT
 content-type: text/html; charset=utf-8
-set-cookie: __cfduid=d89ee33e79708513e09d889a86e8aa34a1603992918; expires=Sat, 28-Nov-20 17:35:18 GMT; path=/; domain=.hashnode.com; HttpOnly; SameSite=Lax; Secure
 cache-control: public, s-maxage=1800, max-age=0
 etag: W/"4436a-AFOlSSR9igz5hRyOL+SdGTPJfxk"
 vary: Accept-Encoding
@@ -141,8 +140,8 @@ PSWD = 'YOUR PASSWORD'
 TO_EMAIL = 'TO EMAIL ADDRESS'
 
 #Subject and header
-header = 'To:' + TO_EMAIL + '\n' + 'From: ' + 
-FROM_EMAIL + '\n' + 'Subject: Alert for shaikhu.com \n'
+SUB = 'Subject: Alert for shaikhu.com \n'
+header = 'To:' + TO_EMAIL + '\n' + 'From: ' + FROM_EMAIL + '\n' + SUB
 
 #Message
 body = """
