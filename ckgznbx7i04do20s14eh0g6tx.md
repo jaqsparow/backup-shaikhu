@@ -183,6 +183,8 @@ Visit my GitHub page for complete code at  [GitHub](https://github.com/jaqsparow
 
 1.  [https://docs.python.org/3/library/os.html#os.popen](https://docs.python.org/3/library/os.html#os.popen) 
 2.  [Twilio sms api](https://www.twilio.com/docs/sms) 
+3.  [Flask documentaion](https://flask.palletsprojects.com/en/1.1.x/) 
+4.   [ngrok](https://ngrok.com/docs) 
 
 
 #### My other recent posts
