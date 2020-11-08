@@ -50,7 +50,7 @@ pip3 install flask
 ```
 - Lets write very basic flask app with below lines of code.
 
-```
+```python
 from flask import Flask
 app = Flask(__name__)
 
@@ -95,7 +95,7 @@ os.popen(command)
 ```
 So this is how our Flask app looks like if we want to run a command using **popen()**
 
-```
+```python
 from flask import Flask
 import os
 app = Flask(__name__)
@@ -126,7 +126,7 @@ Now when we send a sms to Twilio number, It will make HTTP Post request to above
 Now if you want to run multiple jobs based on SMS body (like JOB1,JOB2) we need to install Twilio library so that we can parse SMS and run the jobs accordingly.
 Here is the app.py looks like with that feature.
 
-```
+```python
 from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
